@@ -1,12 +1,12 @@
 ---
 lab:
   title: Gunakan Pembelajaran Mesin Otomatis
-ms.openlocfilehash: 9836a169752705779f263e7b005baf11e2f7b616
-ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
+ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
+ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
 ms.translationtype: HT
 ms.contentlocale: id-ID
-ms.lasthandoff: 04/01/2022
-ms.locfileid: "145195835"
+ms.lasthandoff: 06/11/2022
+ms.locfileid: "146266839"
 ---
 # <a name="use-automated-machine-learning"></a>Gunakan Pembelajaran Mesin Otomatis
 
@@ -16,7 +16,7 @@ Dalam latihan ini, Anda akan menggunakan antarmuka visual untuk pembelajaran mes
 
 > **Catatan**: Anda juga dapat menggunakan pembelajaran Azure Machine Learning SDK.
 
-## <a name="before-you-start"></a>Sebelum Anda memulai
+## <a name="before-you-start"></a>Sebelum memulai
 
 Jika Anda belum melakukannya, selesaikan latihan *[Membuat Ruang Kerja Azure Machine Learning](01-create-a-workspace.md)* untuk membuat ruang kerja Azure Machine Learning dan instans komputasi, dan klon buku catatan yang diperlukan untuk latihan ini.
 
@@ -84,7 +84,7 @@ Di Azure Machine Learning, operasi yang Anda jalankan disebut *eksperimen*. Ikut
     - **Jenis dan pengaturan tugas**:
         - **Jenis tugas**: Klasifikasi
         - Pilih **Lihat pengaturan konfigurasi tambahan** untuk membuka **Konfigurasi tambahan**:
-            - **Metrik utama**: Pilih **AUC_Weighted** *(selengkapnya tentang metrik ini nanti!)*
+            - **Metrik utama**: Pilih **Berbobot AUC** *(lebih lanjut tentang metrik ini nanti!)*
             - **Jelaskan model terbaik**: Dipilih - *opsi ini menyebabkan pembelajaran mesin otomatis untuk menghitung kepentingan fitur untuk model terbaik; memungkinkan untuk menentukan pengaruh setiap fitur pada label yang diprediksi.*
             - **Gunakan semua model yang didukung**: <u>Tidak</u>dipilih - kami akan membatasi eksperimen untuk mencoba beberapa algoritme tertentu.
             - **Model yang diizinkan**: Pilih hanya **LogisticRegression** dan **RandomForest**. Ini akan menjadi satu-satunya algoritma yang dicoba dalam percobaan.
@@ -106,7 +106,7 @@ Di Azure Machine Learning, operasi yang Anda jalankan disebut *eksperimen*. Ikut
 
 Setelah percobaan selesai; Anda dapat meninjau model berkinerja terbaik yang dihasilkan (perhatikan bahwa dalam kasus ini, kami menggunakan kriteria keluar untuk menghentikan eksperimen - jadi model "terbaik" yang ditemukan oleh eksperimen mungkin bukan model terbaik, hanya model terbaik yang ditemukan dalam batasan waktu dan metrik yang diizinkan untuk latihan ini!).
 
-1. Di tab **Detail** proses pembelajaran mesin otomatis, perhatikan ringkasan model terbaik.
+1. Pada tab **Ringkasan** dari proses pembelajaran mesin otomatis, perhatikan ringkasan model terbaik.
 2. Pilih **Nama algoritma** untuk model terbaik guna melihat turunan yang menghasilkannya.
 
     Model terbaik diidentifikasi berdasarkan metrik evaluasi yang Anda tentukan (*AUC_Weighted*). Untuk menghitung metrik ini, proses pelatihan menggunakan beberapa data untuk melatih model, dan menerapkan teknik yang disebut *validasi silang* untuk menguji model terlatih secara berulang dengan data yang tidak dilatih dan membandingkan nilai yang diprediksi dengan nilai yang diketahui sebenarnya. Dari perbandingan ini, *matriks yang bingung* dengan positif-benar, positif-palsu, negatif-benar, dan negatif-palsu ditabulasi dan metrik klasifikasi tambahan dihitung - termasuk bagan Kurva Operator Penerima (ROC) yang membandingkan Tingkat Benar-Positif dan tingkat Salah-Positif. Area di bawah kurva ini (AUC) adalah metrik umum yang digunakan untuk mengevaluasi kinerja klasifikasi.
@@ -120,7 +120,7 @@ Setelah menggunakan pembelajaran mesin otomatis untuk melatih beberapa model, An
 
 > **Catatan**: Di Azure Machine Learning, Anda dapat menyebarkan layanan sebagai Azure Container Instances (ACI) atau ke kluster Azure Kubernetes Service (AKS). Untuk skenario produksi, penyebaran AKS disarankan, yang harus Anda buat target komputasi *kluster inferensinya*. Dalam latihan ini, Anda akan menggunakan layanan ACI, yang merupakan target penyebaran yang sesuai untuk pengujian, dan tidak mengharuskan Anda membuat kluster inferensi.
 
-1. Pilih tab **Detail** untuk eksekusi yang menghasilkan model terbaik.
+1. Pilih tab **Ringkasan** untuk proses yang menghasilkan model terbaik.
 2. Dari opsi **Sebarkan**, gunakan tombol **Sebarkan ke layanan web** untuk menerapkan model dengan setelan berikut:
     - **Nama**: prediksi otomatis-diabetes
     - **Deskripsi:** Prediksi diabetes
