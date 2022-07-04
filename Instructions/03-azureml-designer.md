@@ -1,12 +1,12 @@
 ---
 lab:
   title: Menggunakan Desainer Azure Machine Learning
-ms.openlocfilehash: 55911fdc4ea7e3a2b48ab0d0a583a0a24121ffca
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: ce03f54e5762e66363608b88fd86ec1de5795a33
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: id-ID
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266848"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733076"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Menggunakan Desainer Azure Machine Learning
 
@@ -37,10 +37,10 @@ Untuk menggunakan perancang Azure Machine Learning, Anda memerlukan komputasi un
 
 Sekarang setelah Anda memiliki beberapa sumber daya komputasi yang dapat digunakan untuk menjalankan alur pelatihan, Anda memerlukan beberapa data untuk melatih model.
 
-1. Di Azure Machine Learning studio, lihat halaman **Himpunan Data**. Himpunan data mewakili file data atau tabel tertentu yang Anda rencanakan untuk dikerjakan di Azure ML.
+1. Di studio Azure Machine Learning, lihat halaman **Data**. Himpunan data mewakili file data atau tabel tertentu yang Anda rencanakan untuk dikerjakan di Azure ML.
 2. Jika Anda sebelumnya telah membuat kumpulan data **himpunan data diabetes**, buka. Jika tidak, buat kumpulan data baru dari file web, menggunakan pengaturan berikut, lalu buka:
     * **Info dasar**:
-        * **URL Web**: 
+        * **URL Web**: https://aka.ms/diabetes-data
         * **Nama**: himpunan data diabetes
         * **Jenis himpunan data**: Tabular
         * **Deskripsi**: Data diabetes
@@ -64,10 +64,10 @@ Untuk memulai dengan desainer, pertama-tama Anda harus membuat alur dan menambah
 
 1. Di studio Azure Machine Learning, lihat laman **Perancang** dan buat alur baru.
 2. Ubah nama alur default (**Pipeline-Created-on-* date***) menjadi **Pelatihan Diabetes Visual** dengan mengeklik ikon **&#9881;** di kanan untuk membuka panel **Pengaturan**.
-3. Perhatikan bahwa Anda harus menentukan target komputasi untuk menjalankan alur. Di panel **Pengaturan**, klik **Pilih target komputasi** dan pilih kluster komputasi Anda.
+3. Perhatikan bahwa Anda harus menentukan target komputasi untuk menjalankan alur. Di panel **Pengaturan**, klik **Pilih jenis komputasi** dan pilih Kluster komputasi, klik Pilih kluster komputasi Azure ML dan pilih kluster komputer Anda dan tutup Pengaturan.
 4. Di sisi kiri perancang, pilih tab **Data**, dan seret himpunan data **himpunan data diabetes** ke kanvas.
 5. Pilih komponen **himpunan data diabetes** di kanvas. Kemudian klik kanan, dan pilih **Pratinjau data**.
-6. Di panel DatasetOutput, pilih tab **Profil**.
+6. Di panel DataOutput, pilih tab **Profil**.
 7. Tinjau skema data, perhatikan bahwa Anda dapat melihat distribusi berbagai kolom sebagai histogram. Kemudian tutup visualisasi.
 
 ## <a name="add-transformations"></a>Menambahkan transformasi
@@ -126,10 +126,11 @@ Dengan langkah-langkah aliran data yang ditentukan, Anda sekarang siap untuk men
 
 Sekarang Anda telah menggunakan *alur pelatihan* untuk melatih model, Anda dapat membuat *alur inferensi* yang menggunakan model terlatih untuk memprediksi label data baru.
 
-1. Di daftar drop-down **Buat alur masuk**, klik **Alur inferensi real-time**. Setelah beberapa detik, versi baru saluran Anda yang bernama **Inferensi real-time Pelatihan Diabetes Visual** akan dibuka.
-2. Ganti nama alur baru menjadi **Prediksi Diabetes**, lalu tinjau alur baru. Perhatikan bahwa transformasi normalisasi dan model terlatih telah dirangkum dalam alur ini sehingga statistik dari data pelatihan Anda akan digunakan untuk menormalisasi nilai data baru, dan model terlatih akan digunakan untuk menilai data baru.
-3. Perhatikan bahwa saluran inferensi mengasumsikan bahwa data baru akan cocok dengan skema data pelatihan asli, sehingga himpunan data **himpunan data diabetes** dari saluran pelatihan disertakan. Namun, data input ini menyertakan label **Diabetes** yang diprediksi model, yang tidak intuitif untuk disertakan dalam data pasien baru yang prediksi diabetesnya belum dibuat.
-4. Hapus himpunan data **himpunan data diabetes** dari saluran inferensi dan ganti dengan komponen **Masukkan Data Secara Manual**; menghubungkannya ke input **himpunan data** yang sama dari komponen **Terapkan Transformasi** sebagai **Input Layanan Web**. Kemudian ubah pengaturan komponen **Masukkan Data Secara Manual** untuk menggunakan input CSV berikut, yang menyertakan nilai fitur tanpa label untuk tiga pengamatan pasien baru:
+1. Di tab **Pekerjaan**, navigasikan ke alur yang telah selesai. 
+2. Pilih **Buat alur inferensi**, dan klik **alur inferensi real time**. Setelah beberapa detik, versi baru saluran Anda yang bernama **Inferensi real-time Pelatihan Diabetes Visual** akan dibuka.
+3. Ganti nama alur baru menjadi **Prediksi Diabetes**, lalu tinjau alur baru. Perhatikan bahwa transformasi normalisasi dan model terlatih telah dirangkum dalam alur ini sehingga statistik dari data pelatihan Anda akan digunakan untuk menormalisasi nilai data baru, dan model terlatih akan digunakan untuk menilai data baru.
+4. Perhatikan bahwa saluran inferensi mengasumsikan bahwa data baru akan cocok dengan skema data pelatihan asli, sehingga himpunan data **himpunan data diabetes** dari saluran pelatihan disertakan. Namun, data input ini menyertakan label **Diabetes** yang diprediksi model, yang tidak intuitif untuk disertakan dalam data pasien baru yang prediksi diabetesnya belum dibuat.
+5. Hapus himpunan data **himpunan data diabetes** dari saluran inferensi dan ganti dengan komponen **Masukkan Data Secara Manual**; menghubungkannya ke input **himpunan data** yang sama dari komponen **Terapkan Transformasi** sebagai **Input Layanan Web**. Kemudian ubah pengaturan komponen **Masukkan Data Secara Manual** untuk menggunakan input CSV berikut, yang menyertakan nilai fitur tanpa label untuk tiga pengamatan pasien baru:
 
 ```CSV
 PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age

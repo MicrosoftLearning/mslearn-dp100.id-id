@@ -1,12 +1,12 @@
 ---
 lab:
   title: Gunakan Pembelajaran Mesin Otomatis
-ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: a4908c0de74edb6c2fdf7b1a7288014d1ab86b94
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: id-ID
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266839"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733067"
 ---
 # <a name="use-automated-machine-learning"></a>Gunakan Pembelajaran Mesin Otomatis
 
@@ -16,7 +16,7 @@ Dalam latihan ini, Anda akan menggunakan antarmuka visual untuk pembelajaran mes
 
 > **Catatan**: Anda juga dapat menggunakan pembelajaran Azure Machine Learning SDK.
 
-## <a name="before-you-start"></a>Sebelum memulai
+## <a name="before-you-start"></a>Sebelum Anda memulai
 
 Jika Anda belum melakukannya, selesaikan latihan *[Membuat Ruang Kerja Azure Machine Learning](01-create-a-workspace.md)* untuk membuat ruang kerja Azure Machine Learning dan instans komputasi, dan klon buku catatan yang diperlukan untuk latihan ini.
 
@@ -42,7 +42,7 @@ Untuk menggunakan pembelajaran mesin otomatis, Anda memerlukan komputasi untuk m
 Sekarang setelah Anda memiliki beberapa sumber daya komputasi yang dapat digunakan untuk memproses data, Anda memerlukan cara untuk menyimpan dan menyerap data yang akan diproses.
 
 1. Lihat data yang dipisahkan koma di https://aka.ms/diabetes-data di browser web Anda. Kemudian simpan ini sebagai file lokal bernama **diabetes.csv** (tidak masalah di mana Anda menyimpannya).
-2. Di Azure Machine Learning studio, lihat halaman **Himpunan Data**. Himpunan data mewakili file data atau tabel tertentu yang Anda rencanakan untuk dikerjakan di Azure ML.
+2. Di studio Azure Machine Learning, lihat halaman **Data**. Himpunan data mewakili file data atau tabel tertentu yang Anda rencanakan untuk dikerjakan di Azure ML.
 3. Buat himpunan data baru dari file lokal, menggunakan pengaturan berikut:
     * **Info dasar**:
         * **Nama**: himpunan data diabetes
